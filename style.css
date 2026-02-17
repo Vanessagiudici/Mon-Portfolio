@@ -1,0 +1,696 @@
+/* ============================================
+   FICHIER CSS - STYLES DU PORTFOLIO
+   ============================================
+   Ce fichier contient tous les styles visuels du site :
+   - Styles de base et réinitialisation
+   - Navigation (navbar en forme de pilule)
+   - Sections Hero et About
+   - Centres d'intérêt
+   - Projets (grille responsive)
+   - Expériences (timeline horizontale)
+   - Compétences (cartes avec niveaux)
+   - Footer et boutons
+   - Responsive design (adaptation mobile/tablette)
+*/
+
+/* ============================================
+   1. STYLES DE BASE
+   ============================================ */
+
+/* Applique le modèle de boîte border-box à tous les éléments */
+/* border-box : les padding et border sont inclus dans la largeur/hauteur totale */
+* {
+  box-sizing: border-box;
+}
+
+/* Styles généraux du corps de la page */
+body {
+  margin: 0;                                    /* Supprime les marges par défaut du navigateur */
+  font-family: "Segoe UI", Arial, sans-serif;   /* Police principale du site */
+  background-color: #F4F7FF;                    /* Couleur de fond bleu-gris clair */
+  color: #2C2C2C;                               /* Couleur du texte (gris foncé) */
+  line-height: 1.9;                             /* Espacement entre les lignes pour la lisibilité */
+  padding-top: 100px;                           /* Espace en haut pour éviter que le contenu passe sous la navbar fixe */
+}
+
+/* ============================================
+   2. BARRE DE NAVIGATION (NAVBAR PILULE)
+   ============================================ */
+
+/* Conteneur principal de la navigation */
+.navbar {
+  position: fixed;                              /* Reste fixe en haut lors du scroll */
+  top: 15px;                                    /* Distance depuis le haut de la fenêtre */
+  left: 50%;                                    /* Positionne à 50% de la largeur */
+  transform: translateX(-50%);                  /* Centre horizontalement la navbar */
+  background-color: rgba(107, 91, 149, 0.95);  /* Fond violet semi-transparent */
+  padding: 10px 28px;                           /* Espacement intérieur (haut/bas gauche/droite) */
+  border-radius: 50px;                          /* Bords très arrondis (effet pilule) */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18); /* Ombre portée pour effet de profondeur */
+  z-index: 1000;                                /* S'affiche au-dessus de tous les autres éléments */
+  backdrop-filter: blur(6px);                   /* Effet de flou sur l'arrière-plan */
+}
+
+/* Liste des liens de navigation */
+.navbar ul {
+  list-style: none;                             /* Supprime les puces de liste */
+  display: flex;                                /* Affichage en ligne (horizontal) */
+  gap: 18px;                                    /* Espacement entre les éléments de menu */
+  margin: 0;                                    /* Supprime les marges par défaut */
+  padding: 0;                                   /* Supprime le padding par défaut */
+}
+
+/* Liens de navigation */
+.navbar a {
+  color: #B8A9C9;                               /* Couleur des liens (violet clair) */
+  text-decoration: none;                        /* Supprime le soulignement des liens */
+  font-weight: 600;                             /* Texte en gras */
+  padding: 10px 18px;                           /* Espacement intérieur cliquable */
+  border-radius: 999px;                         /* Bords très arrondis (effet pilule) */
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;  /* Animations fluides sur 3 propriétés */
+}
+
+/* État au survol et lien actif (page actuelle) */
+.navbar a:hover,
+.navbar a.active {
+  background-color: #D8BFD8;                    /* Fond violet clair au survol */
+  color: #FFFFFF;                               /* Texte blanc */
+  transform: translateY(-2px);                  /* Léger déplacement vers le haut */
+}
+
+/* ============================================
+   3. SECTION HERO / À PROPOS
+   ============================================ */
+
+/* Section principale de présentation avec dégradé */
+.hero-about {
+  background: linear-gradient(180deg, #6B5B95 0%, #B8A9C9 100%);  /* Dégradé vertical violet foncé → clair */
+  color: #FFFFFF;                               /* Texte blanc */
+  padding: 10px 20px 70px;                      /* Espacement : peu en haut, beaucoup en bas */
+}
+
+/* Zone de texte du hero (nom et titre) */
+.hero-text {
+  text-align: center;                           /* Centre le texte horizontalement */
+  margin-bottom: 60px;                          /* Espace en dessous */
+}
+
+/* Titre principal (nom) */
+.hero-text h1 {
+  font-size: 2.8rem;                            /* Taille grande pour le nom */
+  margin-bottom: 10px;                          /* Petit espace en dessous */
+  font-weight: 400;                             /* Poids normal (pas trop gras) */
+  opacity: 0.9;                                 /* Légère transparence */
+}
+
+/* Sous-titre (profession/statut) */
+.hero-subtitle {
+  font-size: 2rem;                              /* Taille moyenne */
+  font-weight: 200;                             /* Très fin/léger */
+  color: #F4F7FF;                               /* Couleur claire */
+  margin: 0;                                    /* Pas de marge */
+}
+
+/* ============================================
+   4. CONTENEUR À PROPOS (PHOTO + TEXTE)
+   ============================================ */
+
+/* Carte contenant la photo et la description */
+.about-container {
+  max-width: 2100px;                            /* Largeur maximale du conteneur */
+  margin: auto;                                 /* Centre horizontalement */
+  display: flex;                                /* Affichage flexible (côte à côte) */
+  align-items: center;                          /* Aligne verticalement au centre */
+  gap: 50px;                                    /* Espacement entre photo et texte */
+  background-color: #B8A9C9;                    /* Fond violet clair */
+  color: #2C2C2C;                               /* Texte gris foncé */
+  padding: 45px;                                /* Espacement intérieur généreux */
+  border-radius: 22px;                          /* Coins arrondis */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Ombre portée douce */
+}
+
+/* Photo de profil */
+.about-photo img {
+  width: 240px;                                 /* Largeur fixe */
+  height: 240px;                                /* Hauteur fixe (carré) */
+  object-fit: cover;                            /* Recadre l'image pour remplir le carré */
+  border-radius: 50%;                           /* Forme circulaire */
+  border: 6px solid #FFFFFF;                    /* Bordure blanche épaisse */
+}
+
+/* Titre de la section texte */
+.about-text h2 {
+  font-size: 1.5rem;                            /* Taille du titre */
+  margin-bottom: 20px;                          /* Espace en dessous */
+}
+
+/* Paragraphe de présentation */
+.about-text p {
+  margin: 0;                                    /* Pas de marge par défaut */
+  font-size: 1.18rem;                           /* Taille légèrement augmentée pour la lisibilité */
+  line-height: 1.7;                             /* Espacement entre les lignes */
+}
+
+/* ============================================
+   5. CENTRES D'INTÉRÊT
+   ============================================ */
+
+/* Section des hobbies */
+.interests {
+  margin-top: 90px;                             /* Grand espace au-dessus */
+  text-align: center;                           /* Centre tout le contenu */
+}
+
+/* Titre de la section */
+.interests h2 {
+  margin-bottom: 30px;                          /* Espace en dessous */
+  font-size: 1.5rem;                            /* Taille du titre */
+  color: #2C2C2C;                               /* Couleur gris foncé */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);/* Ligne de séparation en dessous */
+  padding-bottom: 10px;                         /* Espace entre texte et ligne */
+}
+
+/* Liste des centres d'intérêt */
+.interests-list {
+  display: flex;                                /* Affichage flexible */
+  justify-content: center;                      /* Centre horizontalement */
+  gap: 40px;                                    /* Espacement entre les items */
+  flex-wrap: wrap;                              /* Passage à la ligne si nécessaire */
+}
+
+/* Carte individuelle de centre d'intérêt */
+.interest-item {
+  display: flex;                                /* Affichage flexible */
+  flex-direction: column;                       /* Empile icône et texte verticalement */
+  align-items: center;                          /* Centre horizontalement */
+  transition: transform 0.3s ease;              /* Animation de déplacement au survol */
+}
+
+/* Icône du centre d'intérêt */
+.interest-item img {
+  width: 80px;                                  /* Largeur fixe */
+  height: 80px;                                 /* Hauteur fixe (carré) */
+  padding: 2px;                                 /* Petit padding intérieur */
+  border-radius: 50%;                           /* Forme circulaire */
+  background-color: #FFFFFF;                    /* Fond blanc */
+  object-fit: contain;                          /* Contient l'image sans déformation */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);  /* Ombre portée légère */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Animations de transformation et ombre */
+}
+
+/* Label du centre d'intérêt */
+.interest-item p {
+  margin-top: 10px;                             /* Espace au-dessus */
+  font-weight: 500;                             /* Légèrement gras */
+  font-size: 0.95rem;                           /* Taille légèrement réduite */
+  color: #2C2C2C;                               /* Couleur gris foncé */
+}
+
+/* Effet au survol de la carte */
+.interest-item:hover {
+  transform: translateY(-4px);                  /* Déplace vers le haut */
+}
+
+/* Effet au survol de l'icône */
+.interest-item:hover img {
+  transform: scale(1.1);                        /* Agrandit l'icône de 10% */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);  /* Ombre plus prononcée */
+}
+
+/* ============================================
+   6. SECTIONS PRINCIPALES (STRUCTURE GÉNÉRALE)
+   ============================================ */
+
+/* Style pour toutes les sections sauf hero-about */
+section:not(.hero-about) {
+  max-width: 1450px;                            /* Largeur maximale du conteneur */
+  margin: 60px auto;                            /* Centre avec marge verticale */
+  padding: 40px 20px;                           /* Espacement intérieur */
+  background-color: #F4F7FF;                    /* Fond bleu-gris clair */
+  color: #2C2C2C;                               /* Texte gris foncé */
+  border-radius: 20px;                          /* Coins arrondis */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);  /* Ombre portée douce */
+}
+
+/* Titres de niveau 2 dans les sections */
+h2 {
+  margin-top: 0;                                /* Pas de marge en haut */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);/* Ligne de séparation en dessous */
+  padding-bottom: 10px;                         /* Espace entre texte et ligne */
+}
+
+/* ============================================
+   7. SECTION PROJETS
+   ============================================ */
+
+/* Conteneur de la section projets */
+#projects {
+    padding: 40px;                              /* Espacement intérieur */
+}
+
+/* Grille des projets (3 colonnes sur desktop) */
+.projects-grid {
+    display: grid;                              /* Affichage en grille CSS */
+    grid-template-columns: repeat(3, 1fr);      /* 3 colonnes de taille égale */
+    gap: 20px;                                  /* Espacement entre les cartes */
+}
+
+/* Carte individuelle de projet */
+.project {
+    background-color: #f5f5f5;                  /* Fond gris clair */
+    padding: 20px;                              /* Espacement intérieur */
+    border-radius: 10px;                        /* Coins arrondis */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);    /* Ombre portée */
+}
+
+/* Titre du projet */
+.project h3 {
+    margin-top: 0;                              /* Pas de marge en haut */
+}
+
+/* Liens dans les projets */
+.project a {
+    display: inline-block;                      /* Affichage bloc inline */
+    margin-top: 10px;                           /* Espace au-dessus */
+    color: #0066cc;                             /* Couleur bleue pour les liens */
+    text-decoration: none;                      /* Pas de soulignement */
+}
+
+/* Responsive : 1 colonne sur mobile */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;             /* Une seule colonne */
+    }
+}
+
+/* ============================================
+   8. SECTION EXPÉRIENCES - TIMELINE HORIZONTALE
+   ============================================ */
+
+/* Conteneur de la section expériences */
+#experiences {
+  margin-top: 60px;                             /* Marge en haut */
+}
+
+/* Titre de la section */
+#experiences h2 {
+  text-align: left;                             /* Alignement à gauche */
+  margin-bottom: 50px;                          /* Espace en dessous */
+}
+
+/* Conteneur de la timeline (défilement horizontal) */
+.timeline {
+  position: relative;                           /* Positionnement relatif pour les éléments enfants absolus */
+  display: flex;                                /* Affichage flexible horizontal */
+  gap: 60px;                                    /* Espacement entre les cartes */
+  padding: 70px 0px 30px 0px;                      /* Espacement intérieur */
+  overflow-x: auto;                             /* Défilement horizontal si nécessaire */
+  scroll-snap-type: x mandatory;                /* Accroche les éléments lors du scroll */
+}
+
+/* Ligne horizontale de la timeline */
+.timeline::before {
+  content: "";                                  /* Pseudo-élément vide */
+  position: absolute;                           /* Positionnement absolu */
+  top: 40px;                                    /* Position depuis le haut */
+  left: 0;                                      /* Démarre à gauche */
+  width: 100%;                                  /* Largeur complète */
+  height: 3px;                                  /* Épaisseur de la ligne */
+  background-color: #B8A9C9;                    /* Couleur violet clair */
+  z-index: 1;                                   /* Sous les cartes */
+}
+
+/* Flèche à la fin de la timeline */
+.timeline::after {
+  content: "";                                  /* Pseudo-élément vide */
+  position: absolute;                           /* Positionnement absolu */
+  top: 34px;                                    /* Position verticale */
+  right: -15px;                                 /* Position à droite */
+  width: 0;                                     /* Largeur nulle (forme de triangle) */
+  height: 0;                                    /* Hauteur nulle */
+  border-left: 16px solid #B8A9C9;             /* Crée la flèche vers la droite */
+  border-top: 9px solid transparent;            /* Partie haute transparente */
+  border-bottom: 9px solid transparent;         /* Partie basse transparente */
+}
+
+/* Carte individuelle d'expérience */
+.experience-item {
+  position: relative;                           /* Positionnement relatif pour éléments enfants absolus */
+  min-width: 260px;                             /* Largeur minimale */
+  max-width: 280px;                             /* Largeur maximale */
+  background-color: white;                      /* Fond blanc */
+  padding: 22px;                                /* Espacement intérieur */
+  margin-top: 80px;                             /* Marge en haut pour laisser place au logo */
+  border-radius: 16px;                          /* Coins arrondis */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);     /* Ombre portée */
+  scroll-snap-align: center;                    /* Centre la carte lors du scroll */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Animations au survol */
+  z-index: 99;
+
+}
+
+/* Effet au survol de la carte */
+.experience-item:hover {
+  transform: translateY(-6px);                  /* Déplace vers le haut */
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);    /* Ombre plus prononcée */
+  z-index: 99;
+}
+
+/* Date de l'expérience (affichée au-dessus de la carte) */
+.experience-date {
+  position: absolute;                           /* Positionnement absolu par rapport à la carte */
+  top: -65px;                                   /* Au-dessus de la carte */
+  left: 50%;                                    /* Centre horizontalement */
+  transform: translateX(-50%);                  /* Ajustement du centrage */
+  font-size: 0.8rem;                            /* Petite taille */
+  font-weight: 600;                             /* Texte gras */
+  color: #6B5B95;                               /* Couleur violet */
+  background-color: #F4F7FF;                    /* Fond clair */
+  padding: 2px 8px;                             /* Petit padding */
+  border-radius: 10px;                          /* Coins arrondis */
+  white-space: nowrap;                          /* Empêche le retour à la ligne */
+  z-index: 2;                                   /* Au-dessus de la ligne */
+}
+
+/* Titre de l'expérience */
+.experience-item h3 {
+  margin-top: 0;                                /* Pas de marge en haut */
+  margin-bottom: 8px;                           /* Petit espace en dessous */
+  color: #6B5B95;                               /* Couleur violet */
+  font-size: 1.05rem;                           /* Taille légèrement augmentée */
+}
+
+/* Description de l'expérience */
+.experience-item p {
+  margin: 0;                                    /* Pas de marge */
+  font-size: 0.9rem;                            /* Taille légèrement réduite */
+  line-height: 1.5;                             /* Espacement des lignes */
+}
+
+/* Personnalisation de la barre de défilement horizontal */
+.timeline::-webkit-scrollbar {
+  height: 6px;                                  /* Hauteur de la barre */
+}
+
+/* Curseur de la barre de défilement */
+.timeline::-webkit-scrollbar-thumb {
+  background-color: #B8A9C9;                    /* Couleur violet clair */
+  border-radius: 10px;                          /* Coins arrondis */
+}
+
+/* Piste de la barre de défilement */
+.timeline::-webkit-scrollbar-track {
+  background: transparent;                      /* Fond transparent */
+}
+
+/* Logo de l'entreprise (au-dessus de la carte) */
+.experience-logo {
+  position: absolute;                           /* Positionnement absolu */
+  top: -140px;                                  /* Bien au-dessus de la carte */
+  left: 50%;                                    /* Centre horizontalement */
+  transform: translateX(-50%);                  /* Ajustement du centrage */
+  width: 70px;                                  /* Largeur fixe */
+  height: 70px;                                 /* Hauteur fixe (carré) */
+  object-fit: contain;                          /* Contient le logo sans déformation */
+  background-color: white;                      /* Fond blanc */
+  padding: 2px;                                 /* Petit padding */
+  border-radius: 50%;                           /* Forme circulaire */
+  border: 1.5px solid #B8A9C9;                 /* Bordure violet clair */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  /* Ombre portée */
+  z-index: 3;                                   /* Au-dessus de tout */
+}
+
+/* ============================================
+   9. SECTION COMPÉTENCES
+   ============================================ */
+
+/* Conteneur des cartes de compétences */
+.skills-container {
+  display: flex;                                /* Affichage flexible */
+  flex-wrap: wrap;                              /* Permet le retour à la ligne */
+  gap: 25px;                                    /* Espacement entre les cartes */
+}
+
+/* Carte individuelle de compétence */
+.skill-card {
+  flex: 1 1 calc((100% - 50px) / 3);           /* 3 cartes par ligne avec espacement */
+  background: #FFFFFF;                          /* Fond blanc */
+  padding: 25px;                                /* Espacement intérieur */
+  border-radius: 16px;                          /* Coins arrondis */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);   /* Ombre portée */
+  transition: transform 0.3s ease;              /* Animation au survol */
+}
+
+/* Effet au survol de la carte */
+.skill-card:hover {
+  transform: translateY(-5px);                  /* Déplace vers le haut */
+}
+
+/* Titre de la compétence */
+.skill-card h3 {
+  margin-top: 0;                                /* Pas de marge en haut */
+}
+
+/* En-tête de compétence (icône + titre) */
+.skill-header {
+  display: flex;                                /* Affichage flexible */
+  align-items: center;                          /* Aligne verticalement image et texte */
+  gap: 10px;                                    /* Espace entre l'image et le titre */
+}
+
+/* Icône dans l'en-tête */
+.skill-header img {
+  width: 30px;                                  /* Largeur de l'icône */
+  height: auto;                                 /* Hauteur automatique */
+}
+
+/* Liste des compétences */
+.skills-list {
+  list-style: none;                             /* Supprime les puces */
+  padding: 0;                                   /* Pas de padding */
+  margin: 0;                                    /* Pas de marge */
+}
+
+/* Item de compétence */
+.skills-list li {
+  display: flex;                                /* Affichage flexible */
+  align-items: center;                          /* Aligne verticalement */
+  gap: 10px;                                    /* Espacement entre nom et niveau */
+}
+
+/* Nom de la compétence */
+.skill-name {
+  min-width: 220px;                             /* Largeur minimale pour alignement */
+}
+
+/* Conteneur des bulles de niveau */
+.skill-level {
+  display: flex;                                /* Affichage flexible */
+  gap: 6px;                                     /* Espacement entre les bulles */
+}
+
+/* Création des 5 bulles de niveau avec pseudo-élément */
+.skill-level::before {
+  content: '';                                  /* Pseudo-élément vide */
+  display: inline-block;                        /* Affichage inline-block */
+  width: 12px;                                  /* Largeur de chaque bulle */
+  height: 12px;                                 /* Hauteur de chaque bulle */
+  border-radius: 50%;                           /* Forme circulaire */
+  background: #ccc;                             /* Couleur par défaut (gris clair) */
+  box-shadow:                                   /* Crée 4 bulles supplémentaires avec des ombres */
+    18px 0 #ccc,                                /* Bulle 2 */
+    36px 0 #ccc,                                /* Bulle 3 */
+    54px 0 #ccc,                                /* Bulle 4 */
+    72px 0 #ccc;                                /* Bulle 5 */
+}
+
+/* Niveau 1/5 : 1 bulle remplie */
+.level-1::before { 
+  box-shadow: 18px 0 #ccc, 36px 0 #ccc, 54px 0 #ccc, 72px 0 #ccc; 
+  background:#333; 
+}
+
+/* Niveau 2/5 : 2 bulles remplies */
+.level-2::before { 
+  box-shadow: 18px 0 #333, 36px 0 #ccc, 54px 0 #ccc, 72px 0 #ccc; 
+  background:#333; 
+}
+
+/* Niveau 3/5 : 3 bulles remplies */
+.level-3::before { 
+  box-shadow: 18px 0 #333, 36px 0 #333, 54px 0 #ccc, 72px 0 #ccc; 
+  background:#333; 
+}
+
+/* Niveau 4/5 : 4 bulles remplies */
+.level-4::before { 
+  box-shadow: 18px 0 #333, 36px 0 #333, 54px 0 #333, 72px 0 #ccc; 
+  background:#333; 
+}
+
+/* Niveau 5/5 : 5 bulles remplies (expertise complète) */
+.level-5::before { 
+  box-shadow: 18px 0 #333, 36px 0 #333, 54px 0 #333, 72px 0 #333; 
+  background:#333; 
+}
+
+/* ============================================
+   10. BOUTONS
+   ============================================ */
+
+/* Bouton de téléchargement (CV PDF) */
+.btn-download {
+  display: inline-flex;                         /* Affichage flex inline */
+  align-items: center;                          /* Centre verticalement le contenu */
+  justify-content: center;                      /* Centre horizontalement le contenu */
+  padding: 12px 28px;                           /* Espacement intérieur */
+  background-color: #6B5B95;                    /* Fond violet */
+  color: #FFFFFF;                               /* Texte blanc */
+  font-weight: 600;                             /* Texte gras */
+  font-size: 1rem;                              /* Taille normale */
+  text-decoration: none;                        /* Pas de soulignement */
+  border-radius: 12px;                          /* Coins arrondis */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);   /* Ombre portée */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;  /* Animations multiples */
+}
+
+/* Effet au survol du bouton */
+.btn-download:hover {
+  background-color: #B8A9C9;                    /* Fond violet plus clair */
+  transform: translateY(-2px);                  /* Déplace légèrement vers le haut */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);  /* Ombre plus prononcée */
+}
+
+/* ============================================
+   11. PIED DE PAGE (FOOTER)
+   ============================================ */
+
+/* Conteneur du footer */
+footer {
+  background-color: #6B5B95;                    /* Fond violet foncé */
+  color: #F4F7FF;                               /* Texte clair */
+  text-align: center;                           /* Centre le texte */
+  padding: 10px;                                /* Espacement intérieur */
+  display: flex;                                /* Affichage flexible */
+  flex-direction: column;                       /* Empile les éléments verticalement */
+  gap: 6px;                                     /* Espacement vertical entre les éléments */
+}
+
+/* Paragraphes du footer */
+footer p {
+  margin: 0;                                    /* Pas de marge */
+}
+
+/* Liens avec icônes (LinkedIn, email) */
+.icon-link {
+  display: inline-flex;                         /* Affichage flex inline */
+  align-items: center;                          /* Aligne verticalement icône et texte */
+  gap: 8px;                                     /* Espacement entre icône et texte */
+  font-size: 1rem;                              /* Taille normale */
+  color: #F4F7FF;                               /* Couleur claire */
+  text-decoration: none;                        /* Pas de soulignement */
+  font-weight: 500;                             /* Légèrement gras */
+  transition: color 0.3s ease, transform 0.2s ease;  /* Animations de couleur et mouvement */
+}
+
+/* Effet au survol du lien */
+.icon-link:hover {
+  color: #B8A9C9;                               /* Couleur violet clair */
+  transform: translateY(-2px);                  /* Déplace vers le haut */
+}
+
+/* Icônes SVG dans les liens */
+.icon-link svg {
+  width: 20px;                                  /* Largeur de l'icône */
+  height: 20px;                                 /* Hauteur de l'icône */
+  fill: currentColor;                           /* Utilise la couleur du texte parent */
+  transition: transform 0.2s ease;              /* Animation de transformation */
+}
+
+/* Effet au survol de l'icône */
+.icon-link:hover svg {
+  transform: translateY(-2px);                  /* Déplace l'icône vers le haut */
+}
+
+/* ============================================
+   12. BOUTON RETOUR EN HAUT
+   ============================================ */
+
+/* Bouton flottant de retour en haut */
+#topBtn {
+  display: none;                                /* Caché par défaut (affiché par JS après scroll) */
+  position: fixed;                              /* Position fixe (reste visible lors du scroll) */
+  bottom: 30px;                                 /* Distance depuis le bas */
+  right: 30px;                                  /* Distance depuis la droite */
+  padding: 12px 16px;                           /* Espacement intérieur */
+  border: none;                                 /* Pas de bordure */
+  border-radius: 10px;                          /* Coins arrondis */
+  background-color: #6B5B95;                    /* Fond violet */
+  color: #FFFFFF;                               /* Texte/icône blanc */
+  cursor: pointer;                              /* Curseur en forme de main au survol */
+}
+
+/* ============================================
+   13. RESPONSIVE DESIGN (ADAPTATION MOBILE/TABLETTE)
+   ============================================ */
+
+/* Tablettes et petits écrans (max 900px) */
+@media (max-width: 900px) {
+  /* Empile photo et texte verticalement sur tablette */
+  .about-container {
+    flex-direction: column;                     /* Disposition verticale */
+    text-align: center;                         /* Centre le texte */
+  }
+
+  /* Réduit la taille du sous-titre */
+  .hero-subtitle {
+    font-size: 2rem;
+  }
+
+  /* Passe à 2 colonnes pour les cartes de compétences */
+  .skill-card {
+    flex: 1 1 calc((100% - 25px) / 2);         /* 2 cartes par ligne */
+  }
+}
+
+/* Smartphones (max 600px) */
+@media (max-width: 600px) {
+  /* Augmente l'espace en haut pour la navbar plus haute */
+  body {
+    padding-top: 130px;
+  }
+
+  /* Adapte la navbar pour mobile */
+  .navbar {
+    width: 92%;                                 /* Prend presque toute la largeur */
+    padding: 12px;                              /* Réduit le padding */
+  }
+
+  /* Menu sur plusieurs lignes si nécessaire */
+  .navbar ul {
+    flex-wrap: wrap;                            /* Permet le retour à la ligne */
+    justify-content: center;                    /* Centre les éléments */
+    gap: 10px;                                  /* Réduit l'espacement */
+  }
+
+  /* Réduit encore le sous-titre */
+  .hero-subtitle {
+    font-size: 1.6rem;
+  }
+
+  /* Passe à 1 colonne pour les cartes de compétences */
+  .skill-card {
+    flex: 1 1 100%;                             /* 1 carte par ligne (pleine largeur) */
+  }
+
+  /* Adapte la timeline pour mobile */
+  .timeline {
+    gap: 35px;                                  /* Réduit l'espacement */
+    padding: 70px 0px 15px 0px;                    /* Réduit le padding horizontal */
+  }
+
+  /* Réduit la taille des cartes d'expérience */
+  .experience-item {
+    min-width: 230px;                           /* Largeur minimale réduite */
+  }
+}
